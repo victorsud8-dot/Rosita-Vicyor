@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rosita ♥ Victor</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #000;
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ==============================
+   PANTALLA DE INICIO
+============================== */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #17112d,
+            #05040c 50%,
+            #000
+        );
+
+    transition:
+        opacity 1.8s ease,
+        visibility 1.8s ease;
+}
+
+.intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-small {
+    color: #ffd45c;
+    letter-spacing: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
+    opacity: 0;
+
+    animation: appear 2s forwards;
+}
+
+.intro-name {
+    margin-top: 20px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(55px, 12vw, 120px);
+    font-weight: normal;
+    color: #fff;
+
+    opacity: 0;
+
+    animation:
+        appear 2s 1.5s forwards,
+        glow 3s 3s infinite alternate;
+}
+
+.intro-text {
+    margin-top: 25px;
+    color: #aaa;
+
+    opacity: 0;
+
+    animation:
+        appear 2s 3s forwards;
+}
+
+.enter {
+    margin-top: 40px;
+    padding: 14px 32px;
+
+    border-radius: 50px;
+    border: 1px solid #ffd45c;
+
+    background: transparent;
+    color: #ffd45c;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    opacity: 0;
+
+    animation:
+        appear 2s 4s forwards;
+
+    transition: .4s;
+}
+
+.enter:hover {
+    background: #ffd45c;
+    color: #000;
+
+    box-shadow:
+        0 0 40px
+        rgba(255,210,70,.6);
+
+    transform: scale(1.08);
+}
+
+
+/* ==============================
+   ANIMACIONES
+============================== */
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow:
+            0 0 10px
+            rgba(255,210,70,.3);
+    }
+
+    to {
+        text-shadow:
+            0 0 35px
+            rgba(255,210,70,.9);
+    }
+
+}
+
+
+/* ==============================
+   UNIVERSO
+============================== */
+
+.universe {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.65)
+        ),
+
+        url("universo.png")
+        center / cover
+        fixed;
+}
+
+.universe::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 15%,
+            rgba(0,0,0,.65) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ==============================
+   ESTRELLAS
+============================== */
+
+.stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    animation:
+        twinkle
+        var(--duration)
+        infinite
+        alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .2;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.6);
+    }
+
+}
+
+
+/* ==============================
+   CONTENIDO CENTRAL
+============================== */
+
+.main-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    text-align: center;
+
+    padding: 25px;
+
+    animation:
+        mainAppear 2s ease;
+}
+
+@keyframes mainAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+.subtitle {
+
+    color: #ffd45c;
+
+    letter-spacing: 6px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   NOMBRES
+============================== */
+
+.names {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(
+        55px,
+        11vw,
+        120px
+    );
+
+    font-weight: normal;
+
+    line-height: 1;
+
+    color: white;
+
+    text-shadow:
+
+        0 0 10px
+        rgba(255,255,255,.3),
+
+        0 0 35px
+        rgba(255,210,70,.5);
+}
+
+
+/* ==============================
+   CORAZÓN
+============================== */
+
+.heart {
+
+    display: inline-block;
+
+    color: #ffd45c;
+
+    font-size: .55em;
+
+    margin: 0 10px;
+
+    animation:
+        heartbeat
+        1.5s
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            #ffd45c
+        );
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+}
+
+
+/* ==============================
+   FRASE
+============================== */
+
+.main-message {
+
+    max-width: 600px;
+
+    margin:
+        30px auto 0;
+
+    color: #eee;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    text-shadow:
+        0 2px 8px #000;
+}
+
+
+/* ==============================
+   FLORES
+============================== */
+
+.flower {
+
+    position: absolute;
+
+    z-index: 20;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    animation:
+
+        floating
+        var(--speed)
+        ease-in-out
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            #ffd43b
+        );
+
+    transition: .3s;
+}
+
+.flower:hover {
+
+    transform:
+        scale(1.8);
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            #ffd43b
+        );
+}
+
+@keyframes floating {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-30px)
+            rotate(8deg);
+
+    }
+
+}
+
+
+/* ==============================
+   BOTÓN DESCUBRIR
+============================== */
+
+.enter-site {
+
+    margin-top: 35px;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,210,70,.08);
+
+    border:
+        1px solid
+        rgba(255,210,70,.7);
+
+    color: #ffd45c;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.enter-site:hover {
+
+    background: #ffd45c;
+
+    color: #111;
+}
+
+
+/* ==============================
+   BOTÓN DE MÚSICA
+============================== */
+
+.music-button {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    padding: 12px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid
+        rgba(255,210,70,.7);
+
+    background:
+        rgba(0,0,0,.55);
+
+    color: #ffd45c;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition: .3s;
+
+    font-size: 14px;
+}
+
+.music-button:hover {
+
+    background: #ffd45c;
+
+    color: #111;
+
+    transform: scale(1.05);
+}
+
+
+/* ==============================
+   MENSAJE DE FLORES
+============================== */
+
+.message {
+
+    position: fixed;
+
+    z-index: 500;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(90%, 430px);
+
+    transform:
+        translate(-50%,-50%)
+        scale(.7);
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(8,8,20,.96);
+
+    border:
+        1px solid
+        rgba(255,210,70,.5);
+
+    box-shadow:
+        0 0 80px
+        rgba(255,200,50,.25);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .35s;
+}
+
+.message.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+.message h2 {
+
+    color: #ffd45c;
+
+    margin-bottom: 15px;
+}
+
+.message p {
+
+    color: #ddd;
+
+    line-height: 1.8;
+}
+
+.close {
+
+    margin-top: 25px;
+
+    padding: 8px 22px;
+
+    border-radius: 20px;
+
+    background: transparent;
+
+    border: 1px solid #555;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   OTRAS SECCIONES
+============================== */
+
+.section {
+
+    min-height: 100vh;
+
+    padding: 100px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        #02030b;
+}
+
+.section h2 {
+
+    font-family: Georgia, serif;
+
+    color: #ffd45c;
+
+    font-size: 45px;
+
+    margin-bottom: 25px;
+}
+
+.section p {
+
+    max-width: 700px;
+
+    color: #ccc;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+}
+
+
+/* ==============================
+   CARTA
+============================== */
+
+.letter {
+
+    max-width: 650px;
+
+    margin-top: 35px;
+
+    padding: 40px;
+
+    text-align: left;
+
+    line-height: 2;
+
+    color: #eee;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,210,70,.25);
+
+    border-radius: 20px;
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media(max-width:600px) {
+
+    .names {
+        font-size: 48px;
+    }
+
+    .main-message {
+        font-size: 16px;
+    }
+
+    .subtitle {
+        letter-spacing: 3px;
+    }
+
+    .letter {
+        padding: 25px;
+    }
+
+    .music-button {
+        right: 12px;
+        bottom: 12px;
+        font-size: 13px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     MÚSICA
+================================= -->
+
+<audio id="musica" loop>
+
+    <source
+        src="musica.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =================================
+     INTRO
+================================= -->
+
+<div class="intro" id="intro">
+
+    <div class="intro-small">
+        Hay algo que quiero mostrarte...
+    </div>
+
+    <div class="intro-name">
+        Para Rosita
+    </div>
+
+    <div class="intro-text">
+        🌼 Un pequeño universo hecho para ti 🌼
+    </div>
+
+    <button
+        class="enter"
+        onclick="enterUniverse()">
+
+        Abrir ✨
+
+    </button>
+
+</div>
+
+
+<!-- =================================
+     UNIVERSO
+================================= -->
+
+<section class="universe">
+
+    <div class="stars" id="stars"></div>
+
+
+    <!-- FLORES -->
+
+    <div class="flower"
+         style="left:8%;top:20%;--speed:5s"
+         data-message="Rosita, entre millones de estrellas, tú siempre serías mi favorita. 🌼">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:85%;top:18%;--speed:6s"
+         data-message="Si pudiera regalarte una estrella, te regalaría el universo entero. 💛">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:15%;top:72%;--speed:7s"
+         data-message="Hay personas que llegan a nuestra vida y hacen que todo brille diferente. ✨">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:82%;top:70%;--speed:5.5s"
+         data-message="Mi lugar favorito no está en un mapa. Está donde estás tú. 💛">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:50%;top:10%;--speed:6.5s"
+         data-message="Este pequeño universo fue creado pensando en ti, Rosita. 🌼">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:27%;top:35%;--speed:8s"
+         data-message="Cada flor amarilla de este universo representa un pequeño motivo para sonreír contigo. 💛">
+        🌼
+    </div>
+
+
+    <div class="flower"
+         style="left:70%;top:42%;--speed:7s"
+         data-message="Rosita ♥ Victor — dos nombres que ahora forman parte del mismo universo.">
+        🌼
+    </div>
+
+
+    <!-- CENTRO -->
+
+    <div class="main-content">
+
+        <div class="subtitle">
+            Nuestro pequeño universo
+        </div>
+
+
+        <div class="names">
+
+            Rosita
+
+            <span class="heart">
+                ♥
+            </span>
+
+            Victor
+
+        </div>
+
+
+        <p class="main-message">
+
+            Entre millones de estrellas,
+            galaxias y mundos desconocidos,
+            me alegra que nuestros caminos
+            se hayan encontrado.
+
+            <br><br>
+
+            🌼 Tú eres mi flor favorita 🌼
+
+        </p>
+
+
+        <button
+            class="enter-site"
+            onclick="document
+            .getElementById('carta')
+            .scrollIntoView()">
+
+            Descubrir más ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     CARTA
+================================= -->
+
+<section class="section" id="carta">
+
+    <h2>
+        💌 Para Rosita
+    </h2>
+
+
+    <p>
+
+        Quería hacerte algo diferente.
+
+        <br><br>
+
+        No solamente regalarte flores,
+        sino crear un pequeño universo
+        donde cada estrella y cada flor
+        me recuerden a ti.
+
+    </p>
+
+
+    <div class="letter">
+
+        Rosita,
+
+        <br><br>
+
+        Tal vez existan millones de galaxias
+        y billones de estrellas,
+        pero para mí hay algo especial
+        en este pequeño universo que
+        compartimos.
+
+        <br><br>
+
+        Si pudiera llenar el cielo de flores,
+        lo haría solamente para verte sonreír.
+
+        <br><br>
+
+        Gracias por formar parte de mi vida.
+
+        <br><br>
+
+        Con cariño,
+
+        <br>
+
+        <strong style="color:#ffd45c">
+            Victor 💛
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     FINAL
+================================= -->
+
+<section class="section">
+
+    <h2>
+        🌌 Fin del universo
+    </h2>
+
+
+    <p>
+
+        Y si algún día miras al cielo
+        y ves una estrella brillando
+        un poquito más que las demás...
+
+        <br><br>
+
+        recuerda que este pequeño universo
+        siempre tendrá dos nombres:
+
+        <br><br>
+
+        <strong
+            style="
+            font-family:Georgia,serif;
+            font-size:32px;
+            color:#ffd45c;
+            ">
+
+            Rosita ♥ Victor
+
+        </strong>
+
+        <br><br>
+
+        🌼 ✨ 🌼 ✨ 🌼
+
+    </p>
+
+</section>
+
+
+<!-- =================================
+     MENSAJE DE LAS FLORES
+================================= -->
+
+<div class="message" id="message">
+
+    <h2>
+        🌼 Una flor para ti
+    </h2>
+
+    <p id="messageText"></p>
+
+    <button
+        class="close"
+        onclick="closeMessage()">
+
+        Cerrar
+
+    </button>
+
+</div>
+
+
+<!-- =================================
+     BOTÓN DE MÚSICA
+================================= -->
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()">
+
+    🎵 Música
+
+</button>
+
+
+<script>
+
+/* =================================
+   ENTRAR AL UNIVERSO + MÚSICA
+================================= */
+
+function enterUniverse() {
+
+    const intro =
+        document.getElementById("intro");
+
+    const musica =
+        document.getElementById("musica");
+
+    /* Ocultar pantalla inicial */
+
+    intro.classList.add("hidden");
+
+    /* Comenzar música */
+
+    musica.play()
+        .then(() => {
+
+            document
+                .getElementById("musicButton")
+                .textContent =
+                "🎵 Música ON";
+
+        })
+        .catch(error => {
+
+            console.log(
+                "No se pudo iniciar la música:",
+                error
+            );
+
+        });
+
+}
+
+
+/* =================================
+   CONTROL DE MÚSICA
+================================= */
+
+function toggleMusic() {
+
+    const musica =
+        document.getElementById("musica");
+
+    const button =
+        document.getElementById("musicButton");
+
+
+    if (musica.paused) {
+
+        musica.play()
+            .then(() => {
+
+                button.textContent =
+                    "🎵 Música ON";
+
+            });
+
+    } else {
+
+        musica.pause();
+
+        button.textContent =
+            "🔇 Música OFF";
+
+    }
+
+}
+
+
+/* =================================
+   CREAR ESTRELLAS
+================================= */
+
+const stars =
+    document.getElementById("stars");
+
+
+for(let i = 0; i < 220; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.setProperty(
+        "--duration",
+        (1 + Math.random() * 3) + "s"
+    );
+
+    stars.appendChild(star);
+
+}
+
+
+/* =================================
+   FLORES INTERACTIVAS
+================================= */
+
+const flowers =
+    document.querySelectorAll(".flower");
+
+const message =
+    document.getElementById("message");
+
+const messageText =
+    document.getElementById("messageText");
+
+
+flowers.forEach(flower => {
+
+    flower.addEventListener("click", () => {
+
+        messageText.textContent =
+            flower.dataset.message;
+
+        message.classList.add("active");
+
+    });
+
+});
+
+
+/* =================================
+   CERRAR MENSAJE
+================================= */
+
+function closeMessage() {
+
+    message.classList.remove("active");
+
+}
+
+
+/* =================================
+   CERRAR AL TOCAR FUERA
+================================= */
+
+message.addEventListener(
+    "click",
+    function(event) {
+
+        if(event.target === message) {
+
+            closeMessage();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+      </html>
